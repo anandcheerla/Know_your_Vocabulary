@@ -4,30 +4,36 @@ import re          #for regular expressions
 
 print("Enter the name of input text file")
 input_file=input()
-out=open("output.txt","w")
+
+#appending the old output file
+out=open("output.txt","a") 	  
+#meanings file
 out_meanings=open("output_meanings.txt","w")
+
 inp=input("enter the minimum length of words you want\n")
-print("Working on by neglecting the casual words",end="\n")
-li=['is','i','the','am','because','in','you','be','to','but','your','I','That','that','again','of','to','on','it','because','for','My','my','give','he','she','a','an','since','did','do','just','you','but']
 print("Want  to proceed, input yes or no",end="\n")
+
 count=1
 if(input()=='yes'):
-	print("This may take sometime as we need to get every vocabulary meaning",end="\n")
 	print("Working.....")
 	words=set()
 	with open(input_file,'r') as f:
 		for line in f:
 			for word in line.split():
-				word=re.sub('[^a-zA-Z]', '', word)
-				if word != "" and word not in li and len(word)>=int(inp):
-					words.add(word)
+				pattern="([a-z]+(-|'|)[a-z]+)"     #which will atleast take two letters in a word
+				word=re.fullmatch(pattern,word)
+				if word is not None:
+					word=word.string
+					if len(word)>=int(inp):
+						words.add(word)
 	
 	words=list(words)
 	for i in words:
 		out.write(i+"\n")
 					
 	print("The vocabulary words are generated and is stored in output file")
-	if(input("If you want meanings of the vocabulary, input yes")):
+	if(input("If you want meanings of the vocabulary, input yes") == "yes"):
+		print("This may take sometime as we need to get every vocabulary meaning",end="\n")
 		for word in words:
 			html=BeautifulSoup(requests.get("https://www.google.co.in/search?q=meaning:{0}".format(word)).text,'html.parser')
 			table=html.find("table", {"style": "font-size:14px;width:100%"})
