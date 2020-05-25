@@ -5,9 +5,9 @@ import re          #for regular expressions
 print("Enter the name of input text file")
 input_file=input()
 
-#appending the old output file
+#output file to store the vocabulary words
 out=open("output.txt","a") 	  
-#meanings file
+#output file with meanings fetched from internet
 out_meanings=open("output_meanings.txt","w")
 
 inp=input("enter the minimum length of words you want\n")
