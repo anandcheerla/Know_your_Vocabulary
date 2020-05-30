@@ -8,7 +8,7 @@ The segregation is based on the following rules
 3)prepositions,conjunctions and pronouns are omitted
 4)frequency of a word that is greater than 10 are ommitted,those words may indicate straight forward words
 
----yet to figure of any other rules
+---yet to figure out any other rules
 
 
 
