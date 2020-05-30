@@ -1,4 +1,4 @@
-# Subtitle_Vocabulary_Generator
+# Know your Vocabulary
 It generates the vocabulary words and meanings by segregating the non naive words from the file.
 
 The segregation is based on the following rules
@@ -9,9 +9,6 @@ The segregation is based on the following rules
 4)frequency of a word that is greater than 10 are ommitted,those words may indicate straight forward words
 
 ---yet to figure out any other rules
-
-
-
 
 
 meanings:
